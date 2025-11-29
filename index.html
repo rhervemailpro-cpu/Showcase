@@ -8,42 +8,75 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="https://videos.pexels.com/video-files/3657797/3657797-sd_640_360_25fps.mp4" type="video/mp4">
+            <source src="https://videos.pexels.com/video-files/3657797/3657797-sd_640_360_25fps.webm" type="video/webm">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
     <div class="background-gradient"></div>
     
     <div class="container">
         <header>
-            <h1 class="title">RUNNING LEGENDS</h1>
-            <p class="subtitle">Raphael Herve - Lithuania Running Events 2013-2019</p>
+            <div class="header-content">
+                <h1 class="title">RUNNING LEGENDS</h1>
+                <p class="subtitle">Raphael Herve - Lithuania Performance Tracking</p>
+            </div>
         </header>
 
         <div class="content-wrapper">
             <div class="chart-container">
+                <div class="chart-header">
+                    <h2>Performance Analytics</h2>
+                    <p class="chart-subtitle">2013 - 2019 Running Events</p>
+                </div>
                 <canvas id="runningChart"></canvas>
             </div>
 
             <div class="stats-panel">
+                <div class="panel-header">
+                    <h3>Event Details</h3>
+                    <span class="panel-badge">Select a point</span>
+                </div>
                 <div class="event-details" id="eventDetails">
-                    <h3>Select a data point to view details</h3>
+                    <p class="placeholder-text">Click on a data point to view details</p>
                 </div>
             </div>
         </div>
 
         <footer>
             <button class="contact-button" onclick="openContact()">
-                Get In Touch
+                <span class="button-text">Get In Touch</span>
+                <span class="button-arrow">→</span>
             </button>
         </footer>
     </div>
 
-    <!-- Modal for contact -->
+    <!-- Pop-out Modal for contact -->
     <div id="contactModal" class="modal">
+        <div class="modal-overlay"></div>
         <div class="modal-content">
-            <span class="close" onclick="closeContact()">&times;</span>
-            <h2>Get In Touch</h2>
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button class="modal-close" onclick="closeContact()">✕</button>
+            <div class="modal-header">
+                <h2>Get In Touch</h2>
+                <p>Send me a message</p>
+            </div>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Your message..." rows="5" required></textarea>
+                </div>
                 <button type="submit" class="submit-btn">Send Message</button>
             </form>
         </div>
